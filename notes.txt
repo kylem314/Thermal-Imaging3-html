@@ -1,0 +1,10 @@
+roi = region of interest
+
+
+y.jpg = first frame of video
+
+VERSIONS
+
+v1 = only shows/plays video
+v2 = shows video, and change coord variables to change the blue rectangle on it
+v3 = shows video with blue rectangle (change coord values if necessary). Averages grayscale value of region and returns in console

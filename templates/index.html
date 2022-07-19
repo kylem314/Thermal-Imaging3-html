@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Thermal Imaging Analyzer </title>
+
+<!-- 1 em = 16 px -->
+  
+<style>
+  p {
+    margin-top:3px;
+    margin-bottom:3px;
+  }
+  
+  .answer {
+    font-size:24px;;
+  }
+
+  .textbox {
+    color:pink;
+    background-color:brown;
+    border-width:thin;
+    font-family:'Serif';
+  }
+
+  .submitButton {
+    color:red;
+    background-color:aqua;
+    border-width:thick;
+
+  }
+</style>  
+
+</head>
+
+<body style="background-color:#ffffff"> <!-- hey hey background color -->
+<h1 style="color:#fcc603"> MakeSAFE </h1>
+
+<h1 style="margin-bottom:3px;color:#000000;font-size:3em;font-family:'Arial'">Thermal Imaging Analyzer</h1>
+
+<br>
+<br>
+
+<!-- important stuff -->
+
+<form method="post">
+
+<!--
+  
+<p style="font-size:16px;font-family:'Serif';"> Upload Video File </p>
+<p><input class="textbox" type="number" step="1" type="number" name="numb1" required></p> <!--first number text box-->
+
+  
+<label> Upload video file </label>
+<input type="file" id="myFile" /> <br /><br />
+
+<p style="font-size:16px;font-family:'Monospace'"> X Coord Start Position </p> 
+<p><input class="textbox" type="number" step="1" type="number" name="xCoordStart" required></p> 
+
+<p style="font-size:16px;font-family:'Monospace'"> Y Coord Start Position </p> 
+<p><input class="textbox" type="number" step="1" type="number" name="yCoordStart" required></p>   
+
+<p style="font-size:16px;font-family:'Monospace'"> Width </p> 
+<p><input class="textbox" type="number" step="1" type="number" name="width" required></p> 
+
+<p style="font-size:16px;font-family:'Monospace'"> Height </p> 
+<p><input class="textbox" type="number" step="1" type="number" name="height" required></p> 
+
+<br>
+
+<p><input class="submitButton" type="submit" formaction="/add" placeholder="Number 1"></p> <!-- submit button -->
+</form>
+
+  
+<!--
+  
+<p><input class="submitButton" type="submit" formaction="/add" placeholder="Number 1"></p> <!-- submit button -->
+
+</form>
+
+<p class="answer"> Output </p>
+<p class="answer"> {{ display }}<p>
+
+<!-- end of important stuff -->
+
+<!--
+<a href = "https://www.youtube.com/watch?v=oHg5SJYRHA0">
+<img style="float:right" src="{{url_for('static', filename='advertisement.png')}}" alt="if u see it mean no work"  height="40%" width="40%">
+</a>
+
+<a href = "https://www.youtube.com/watch?v=oHg5SJYRHA0">
+<img src="/static/advertisement2.png" height="40%" width="40%" alt="if u see it mean no work">
+</a>
+-->
+
+  
+</body>
+</html>
+
+<!-- https://www.w3schools.com/colors/colors_picker.asp -->
