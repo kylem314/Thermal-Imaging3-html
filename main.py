@@ -1,5 +1,15 @@
+import cv2
+import numpy as np
+import imutils
+from PIL import Image as im
+from io import StringIO
+import PIL
+
+from avgROI import averageGray
+
 # https://flask.palletsprojects.com/en/1.1.x/api/
 from flask import Flask, render_template, url_for, request, redirect
+
 #create a Flask instance
 app = Flask(__name__)
 
@@ -18,10 +28,10 @@ def addition():
     width = int(form['width'])
     height = int(form['height'])
 
-
+    video, calc, file_type = averageGray(xCoordStart, yCoordStart, width, height)
     
-    calc = xCoordStart + yCoordStart
-    return render_template("index.html", display = calc)    
+    #calc = xCoordStart + yCoordStart
+    return render_template("index.html", display = calc, image = video, fileType = file_type)    
           
   return redirect("/index")
 

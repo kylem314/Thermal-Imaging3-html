@@ -32,7 +32,7 @@
 
 </head>
 
-<body style="background-color:#ffffff"> <!-- hey hey background color -->
+<body style="background-color:#ffffff"> 
 <h1 style="color:#fcc603"> MakeSAFE </h1>
 
 <h1 style="margin-bottom:3px;color:#000000;font-size:3em;font-family:'Arial'">Thermal Imaging Analyzer</h1>
@@ -40,14 +40,8 @@
 <br>
 <br>
 
-<!-- important stuff -->
 
 <form method="post">
-
-<!--
-  
-<p style="font-size:16px;font-family:'Serif';"> Upload Video File </p>
-<p><input class="textbox" type="number" step="1" type="number" name="numb1" required></p> <!--first number text box-->
 
   
 <label> Upload video file </label>
@@ -71,26 +65,14 @@
 </form>
 
   
-<!--
-  
-<p><input class="submitButton" type="submit" formaction="/add" placeholder="Number 1"></p> <!-- submit button -->
+
 
 </form>
 
 <p class="answer"> Output </p>
-<p class="answer"> {{ display }}<p>
-
-<!-- end of important stuff -->
-
-<!--
-<a href = "https://www.youtube.com/watch?v=oHg5SJYRHA0">
-<img style="float:right" src="{{url_for('static', filename='advertisement.png')}}" alt="if u see it mean no work"  height="40%" width="40%">
-</a>
-
-<a href = "https://www.youtube.com/watch?v=oHg5SJYRHA0">
-<img src="/static/advertisement2.png" height="40%" width="40%" alt="if u see it mean no work">
-</a>
--->
+<p class="answer"> {{ display }}</p>
+<p class="answer"> {{ image }}</p>
+<p class="answer"> {{ fileType }}</p>
 
   
 </body>
