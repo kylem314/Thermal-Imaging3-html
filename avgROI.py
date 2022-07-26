@@ -14,7 +14,7 @@ import PIL
 # convert it to grayscale
 # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-def averageGray(xCoordStart, yCoordStart, width, height):
+def averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame):
   cap = cv2.VideoCapture("thermalVideo.mp4")
    
   # take first frame of the video

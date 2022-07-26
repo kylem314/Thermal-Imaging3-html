@@ -27,8 +27,10 @@ def addition():
     yCoordStart = int(form['yCoordStart'])
     width = int(form['width'])
     height = int(form['height'])
+    startFrame = int(form['startFrame'])
+    endFrame = int(form['endFrame'])
 
-    video, calc, file_type = averageGray(xCoordStart, yCoordStart, width, height)
+    video, calc, file_type = averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame)
     
     #calc = xCoordStart + yCoordStart
     return render_template("index.html", display = calc, image = video, fileType = file_type)    
