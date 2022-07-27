@@ -15,9 +15,9 @@ app = Flask(__name__)
 
 #connects default URL of server to a python function
 @app.route('/')
-def home():
+def home():      
   
-  data = {'pngImage': [[0,0,0]], 'grayValue': 0}
+  data = {'pngImage': [[0,0,0,0]], 'grayValue': 0, 'imgHeight': 0, 'imgWidth': 0}
   
   #function use Flask import (Jinja) to render an HTML template
   return render_template("index.html", display="", data=data)
@@ -34,7 +34,7 @@ def addition():
     endFrame = int(form['endFrame'])
 
 
-    # data = {'imageData': img2, 'grayValue': totalGrayValue}
+    # data = {'imageData': list, 'grayValue': totalGrayValue, 'imgHeight': img2Height, 'imgWidth': img2Width}
 
     data = averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame)
 

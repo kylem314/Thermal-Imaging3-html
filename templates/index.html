@@ -81,11 +81,16 @@
 <div> 
 <img src="">
 </div>
-<p class="answer" id="grayValue"> grayValue </p>
+<!--
+  <p class="answer" id="grayValue"> grayValue </p>
+  -->
 <div id="grayValueDiv"> grayValueDiv </div>
-<p class="answer"> {{ data.grayValue }} </p>
-<p class="answer" id="fileType"> fileType </p>
-<img src="https://replit.com/@KyleMyint/Thermal-Imaging3-html#converted.png" alt="converted image">
+<!--
+  <p class="answer"> {{ data.grayValue }} </p>
+  -->
+<!-- 
+  <img src="https://replit.com/@KyleMyint/Thermal-Imaging3-html#converted.png" alt="converted image"> 
+  -->
   
 </body>
 
@@ -95,6 +100,8 @@
   
   var imageData = {{ data.imageData }}
   var grayValue = {{ data.grayValue }}
+  var imgHeight = {{ data.imgHeight }}
+  var imgWidth = {{ data.imgWidth }}
 
 
   console.log(typeof grayValue);

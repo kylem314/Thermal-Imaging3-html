@@ -92,13 +92,46 @@ def averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame):
       #converted = PIL.Image.open("converted.png")
       # file_type = converted.format
       # print(file_type)
+      
+      # img2 To Alpha
+      img2Height = img2.shape[0]
+      img2Width = img2.shape[1]
+      img2Pixels = img2Height * img2Width
+      alpha_data = []
+      alpha_width = []
+      #print(str(img2Height) + str(img2Width))
 
-      img2 = img2.tolist()
+      for j in range(img2Width):
+        alpha_width.append(255)
+      for i in range(img2Height):
+        alpha_data.append(alpha_width)
+        
+
+      #print(alpha_data)
+      #print(len(alpha_data[0]))
+      #print(len(alpha_data))
+      
+      rgba = cv2.cvtColor(img2, cv2.COLOR_RGB2RGBA)
+      rgba[:, :, 3] = alpha_data
+
+      img2 = rgba.tolist()
       list = img2
 
-      file_type = type(img2)
+      singleList = []
 
-      data = {'imageData': list, 'grayValue': totalGrayValue}
+      #print(len(list[0][0]))   4
+
+      for sList in list:
+        for tlist in sList:
+          for value in tlist:
+            singleList.append(value)
+
+      #print(len(singleList))
+      
+
+      #file_type = type(img2)
+
+      data = {'imageData': singleList, 'grayValue': totalGrayValue, 'imgHeight': img2Height, 'imgWidth': img2Width}
       
       #print(data)
       print(type(data))
