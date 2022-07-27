@@ -17,7 +17,7 @@ app = Flask(__name__)
 @app.route('/')
 def home():      
   
-  data = {'pngImage': [[0,0,0,0]], 'grayValue': 0, 'imgHeight': 0, 'imgWidth': 0}
+  data = {'imageData': [[0,0,0,0]], 'grayValue': 0, 'imgHeight': 1, 'imgWidth': 1}
   
   #function use Flask import (Jinja) to render an HTML template
   return render_template("index.html", display="", data=data)

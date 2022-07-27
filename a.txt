@@ -1,0 +1,25 @@
+var ctx = c.getContext('2d');
+
+var drawArray = function(arr, width, height) {
+  // set your canvas width/height
+  c.width = width;
+  c.height = height;
+  
+  // create the imageData object, you'll need the width and height of your image
+  var dataImage = ctx.createImageData(width, height);
+  // browsers supporting TypedArrays
+  if (dataImage.data.set) {
+    dataImage.data.set(arr);
+  } else {
+    // IE9
+    arr.forEach(function(val, i) {
+      dataImage.data[i] = val;
+    });
+  }
+  ctx.putImageData(dataImage, 0, 0);
+};
+
+var pixelsArray = [0, 0, 0, 0, 170, 170, 170, 3];
+
+drawArray(pixelsArray, 1, 2);
+<canvas id="c"> </canvas>
