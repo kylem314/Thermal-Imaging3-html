@@ -2,9 +2,12 @@
 import cv2
 import numpy as np
 import imutils
-from PIL import Image as im
+#from PIL import Image as im
 from io import StringIO
-import PIL
+#import PIL
+import base64
+
+
 
 # image = cv2.imread("repl.png")
 
@@ -78,19 +81,30 @@ def averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame):
       totalGrayValue = int(totalGrayValue)
       print(str(totalGrayValue) + " is the average grayscale value of the selected region.")
 
-      data = im.fromarray(img2)
+      #data = im.fromarray(img2)
 
       
-      file_type = data.format
-      print(file_type)
+      #file_type = data.format
+      #print(file_type)
       
-      data.save("converted.png", format="png")
+      #data.save("converted.png", format="png")
       
-      converted = PIL.Image.open("converted.png")
-      file_type = converted.format
-      print(file_type)
+      #converted = PIL.Image.open("converted.png")
+      # file_type = converted.format
+      # print(file_type)
 
-      return converted, totalGrayValue, file_type
+      img2 = img2.tolist()
+      list = img2
+
+      file_type = type(img2)
+
+      data = {'imageData': list, 'grayValue': totalGrayValue}
+      
+      #print(data)
+      print(type(data))
+      print(type(data["imageData"]))
+            
+      return data
   
           #a_tolist = a.tolist()
   

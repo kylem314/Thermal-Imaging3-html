@@ -71,23 +71,48 @@
 <p><input class="submitButton" type="submit" formaction="/add" placeholder="Number 1"></p> <!-- submit button -->
 </form>
 
-<!--  
-<script type="text/javascript">
-  
-
-  
-</script>
--->
 
 </form>
 
 <p class="answer"> Output </p>
-<p class="answer"> {{ display }}</p>
-<p class="answer"> {{ image }}</p>
-<p class="answer"> {{ fileType }}</p>
+  <!--
+<p class="answer" id="pngImage"> pngImage </p>
+  -->
+<div> 
+<img src="">
+</div>
+<p class="answer" id="grayValue"> grayValue </p>
+<div id="grayValueDiv"> grayValueDiv </div>
+<p class="answer"> {{ data.grayValue }} </p>
+<p class="answer" id="fileType"> fileType </p>
 <img src="https://replit.com/@KyleMyint/Thermal-Imaging3-html#converted.png" alt="converted image">
   
 </body>
+
+<script type="text/javascript">
+
+  console.log("Hello world!")
+  
+  var imageData = {{ data.imageData }}
+  var grayValue = {{ data.grayValue }}
+
+
+  console.log(typeof grayValue);
+  //console.log(pngImage + grayValue);
+  
+  //document.getElementById("grayValue").innerHTML = grayValue;
+  //document.getElementById("imageData").innerHTML = imageData;
+
+// const para = document.createElement("p");
+// para.innerText = grayValue;
+// document.body.appendChild(para);
+
+const para = document.createElement("p");
+para.innerHTML =  grayValue;
+document.getElementById("grayValueDiv").appendChild(para);
+  
+</script>
+  
 </html>
 
 <!-- https://www.w3schools.com/colors/colors_picker.asp -->
