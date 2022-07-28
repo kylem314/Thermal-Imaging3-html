@@ -32,11 +32,12 @@ def addition():
     height = int(form['height'])
     startFrame = int(form['startFrame'])
     endFrame = int(form['endFrame'])
+    videoInput = form['file']
 
 
     # data = {'imageData': list, 'grayValue': totalGrayValue, 'imgHeight': img2Height, 'imgWidth': img2Width}
 
-    data = averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame)
+    data = averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame, videoInput)
 
     #print(data)
     
