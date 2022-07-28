@@ -2,9 +2,12 @@
 import cv2
 import numpy as np
 import imutils
-from PIL import Image as im
+#from PIL import Image as im
 from io import StringIO
-import PIL
+#import PIL
+import base64
+
+
 
 # image = cv2.imread("repl.png")
 
@@ -14,7 +17,9 @@ import PIL
 # convert it to grayscale
 # gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-def averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame):
+def averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame, videoInput):
+  print("one" + str(type(videoInput)))
+  print("two" + videoInput)
   cap = cv2.VideoCapture("thermalVideo.mp4")
    
   # take first frame of the video
@@ -78,19 +83,63 @@ def averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame):
       totalGrayValue = int(totalGrayValue)
       print(str(totalGrayValue) + " is the average grayscale value of the selected region.")
 
-      data = im.fromarray(img2)
+      #data = im.fromarray(img2)
 
       
-      file_type = data.format
-      print(file_type)
+      #file_type = data.format
+      #print(file_type)
       
-      data.save("converted.png", format="png")
+      #data.save("converted.png", format="png")
       
-      converted = PIL.Image.open("converted.png")
-      file_type = converted.format
-      print(file_type)
+      #converted = PIL.Image.open("converted.png")
+      # file_type = converted.format
+      # print(file_type)
+      
+      # img2 To Alpha
+      img2Height = img2.shape[0]
+      img2Width = img2.shape[1]
+      img2Pixels = img2Height * img2Width
+      alpha_data = []
+      alpha_width = []
+      #print(str(img2Height) + str(img2Width))
 
-      return converted, totalGrayValue, file_type
+      for j in range(img2Width):
+        alpha_width.append(255)
+      for i in range(img2Height):
+        alpha_data.append(alpha_width)
+        
+
+      #print(alpha_data)
+      #print(len(alpha_data[0]))
+      #print(len(alpha_data))
+      
+      rgba = cv2.cvtColor(img2, cv2.COLOR_RGB2RGBA)
+      rgba[:, :, 3] = alpha_data
+
+      img2 = rgba.tolist()
+      list = img2
+
+      singleList = []
+
+      #print(len(list[0][0]))   4
+
+      for sList in list:
+        for tlist in sList:
+          for value in tlist:
+            singleList.append(value)
+
+      #print(len(singleList))
+      
+
+      #file_type = type(img2)
+
+      data = {'imageData': singleList, 'grayValue': totalGrayValue, 'imgHeight': img2Height, 'imgWidth': img2Width}
+      
+      #print(data)
+      print(type(data))
+      print(type(data["imageData"]))
+            
+      return data
   
           #a_tolist = a.tolist()
   

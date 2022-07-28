@@ -15,9 +15,12 @@ app = Flask(__name__)
 
 #connects default URL of server to a python function
 @app.route('/')
-def home():
-    #function use Flask import (Jinja) to render an HTML template
-    return render_template("index.html", display="")
+def home():      
+  
+  data = {'imageData': [[0,0,0,0]], 'grayValue': 0, 'imgHeight': 1, 'imgWidth': 1}
+  
+  #function use Flask import (Jinja) to render an HTML template
+  return render_template("index.html", display="", data=data)
 
 @app.route("/add", methods=['GET','POST'],)
 def addition():
@@ -29,11 +32,17 @@ def addition():
     height = int(form['height'])
     startFrame = int(form['startFrame'])
     endFrame = int(form['endFrame'])
+    videoInput = form['file']
 
-    video, calc, file_type = averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame)
+
+    # data = {'imageData': list, 'grayValue': totalGrayValue, 'imgHeight': img2Height, 'imgWidth': img2Width}
+
+    data = averageGray(xCoordStart, yCoordStart, width, height, startFrame, endFrame, videoInput)
+
+    #print(data)
     
     #calc = xCoordStart + yCoordStart
-    return render_template("index.html", display = calc, image = video, fileType = file_type)    
+    return render_template("index.html", data=data)    
           
   return redirect("/index")
 

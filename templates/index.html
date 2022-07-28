@@ -40,14 +40,8 @@
 <br>
 <br>
 
-
-<form method="post">
-
-  
-<label> Upload video file (mp4) </label>
-  <br>
-<input type="file" id="myFile" /> <br /><br />
-
+<form method="post"
+    
 <p style="font-size:16px;font-family:'Monospace'"> X Coord Start Position </p> 
 <p><input class="textbox" type="number" step="1" type="number" name="xCoordStart" required></p> 
 
@@ -69,25 +63,81 @@
 <br>
 
 <p><input class="submitButton" type="submit" formaction="/add" placeholder="Number 1"></p> <!-- submit button -->
+  
 </form>
 
-<!--  
-<script type="text/javascript">
-  
-
-  
-</script>
--->
-
-</form>
 
 <p class="answer"> Output </p>
-<p class="answer"> {{ display }}</p>
-<p class="answer"> {{ image }}</p>
-<p class="answer"> {{ fileType }}</p>
-<img src="https://replit.com/@KyleMyint/Thermal-Imaging3-html#converted.png" alt="converted image">
+  <!--
+<p class="answer" id="pngImage"> pngImage </p>
+  -->
+<div> 
+<img src="">
+</div>
+<!--
+  <p class="answer" id="grayValue"> grayValue </p>
+  -->
+<div id="grayValueDiv"> Average grayscale value of region </div>
+<!--
+  <p class="answer"> {{ data.grayValue }} </p>
+  -->
+<!-- 
+  <img src="https://replit.com/@KyleMyint/Thermal-Imaging3-html#converted.png" alt="converted image"> 
+  -->
+
+<canvas id="c"> </canvas>
   
 </body>
+
+<script type="text/javascript">
+
+  console.log("Hello world!")
+  
+  var imageData = {{ data.imageData }}
+  var grayValue = {{ data.grayValue }}
+  var imgHeight = {{ data.imgHeight }}
+  var imgWidth = {{ data.imgWidth }}
+
+
+  console.log(typeof grayValue);
+  //console.log(pngImage + grayValue);
+  
+  //document.getElementById("grayValue").innerHTML = grayValue;
+  //document.getElementById("imageData").innerHTML = imageData;
+
+// const para = document.createElement("p");
+// para.innerText = grayValue;
+// document.body.appendChild(para);
+
+const para = document.createElement("p");
+para.innerHTML =  grayValue;
+document.getElementById("grayValueDiv").appendChild(para);
+
+var ctx = c.getContext('2d');
+
+var drawArray = function(arr, width, height) {
+  // set your canvas width/height
+  c.width = width;
+  c.height = height;
+  
+  // create the imageData object, you'll need the width and height of your image
+  var dataImage = ctx.createImageData(width, height);
+  // browsers supporting TypedArrays
+  if (dataImage.data.set) {
+    dataImage.data.set(arr);
+  } else {
+    // IE9
+    arr.forEach(function(val, i) {
+      dataImage.data[i] = val;
+    });
+  }
+  ctx.putImageData(dataImage, 0, 0);
+};
+
+drawArray(imageData, imgWidth, imgHeight);
+  
+</script>
+  
 </html>
 
 <!-- https://www.w3schools.com/colors/colors_picker.asp -->

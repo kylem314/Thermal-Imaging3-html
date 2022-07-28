@@ -1,0 +1,52 @@
+      Upload button and blank video frame
+
+<!--
+<label> Upload video file (mp4) </label>
+    <form method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
+  <br>
+
+
+<video width="320" height="240" controls>
+  <source src=file type="video/mp4">
+Your browser does not support the video tag.
+</video>
+-->
+
+
+      Shows an uploaded video
+
+<p><input type="file" accept="video/*" id="input-tag"/></p>
+<hr>
+<video controls id="video-tag">
+  <source id="video-source" src="splashVideo">
+  Your browser does not support the video tag.
+</video>
+
+  <script>
+    const videoSrc = document.querySelector("#video-source");
+    const videoTag = document.querySelector("#video-tag");
+    const inputTag = document.querySelector("#input-tag");
+    
+    inputTag.addEventListener('change',  readVideo)
+    
+    function readVideo(event) {
+      console.log(event.target.files)
+      if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function(e) {
+          console.log('loaded')
+          videoSrc.src = e.target.result
+          videoTag.load()
+        }.bind(this)
+    
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    }
+
+    
+    
+  </script>
